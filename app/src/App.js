@@ -13,7 +13,7 @@ function App(props) {
 
   return (
     <div className="App">
-      <h1>App</h1>
+      <h1>Earth From Afar</h1>
       <PhotoList photos= {props.photos}/>
     </div>
   );

@@ -1,29 +1,32 @@
 import React from 'react';
 import { connect } from "react-redux";
+import styled from 'styled-components'
 
+const Card = styled.div`
+  margin: 0 auto;
+  width: 80%;
+  img{
+    width: 80%;
+  }
+`;
 const Photo = (props) => {
   const { date, image } = props.photo
+  const { loading, errorMessage, dayOfPhotos } = props
   const urlBase = 'https://epic.gsfc.nasa.gov/archive/natural/'
-  const formattedDate = new Date(date)
-  const dateForLink = {
-    day: formattedDate.getDate().toLocaleString('en', {minimumIntegerDigits:2}),
-    month: (formattedDate.getMonth()+1).toLocaleString('en', {minimumIntegerDigits:2}),
-    year: formattedDate.getFullYear()
-  }
   return (
     <div>
-      {props.loading && (<h3>Content is loading...</h3>)}
-      {props.errorMessage && (
+      {loading && (<h3>Content is loading...</h3>)}
+      {errorMessage && (
         <div>
           <h3>Something went wrong</h3>
           <p className='error'>{props.errorMessage}</p>
         </div>  
       )}
       {image.length && (
-        <div>
-          <h3>{formattedDate.getHours()}</h3>
-          <img src={`${urlBase}${dateForLink.year}/${dateForLink.month}/${dateForLink.day}/png/${image}.png`}/>
-        </div>
+        <Card>
+          <h3>{(new Date(date).getHours()+1)}</h3>
+          <img src={`${urlBase}${dayOfPhotos.year}/${dayOfPhotos.month}/${dayOfPhotos.day}/png/${image}.png`}/>
+        </Card>
       )}
     </div>
   )
@@ -33,7 +36,8 @@ const Photo = (props) => {
 const mapStateToProps = state => {
   return{
     loading: state.loading,
-    errorMessage: state.errorMessage
+    errorMessage: state.errorMessage,
+    dayOfPhotos: state.dayOfPhotos
   }
 }
 

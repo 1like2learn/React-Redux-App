@@ -5,7 +5,6 @@ export const ERROR_FETCH_PHOTO = 'FETCH_PHOTO_ERROR';
 export const SUCCESS_FETCH_PHOTO = 'LOAD_SUCCESS';
 
 export const fetchPhotos = () => {
-  console.log('fetchPhotos has been run')
   return dispatch => {
     dispatch({ type: FETCH_PHOTOS });
     axios.get('https://epic.gsfc.nasa.gov/api/natural')
