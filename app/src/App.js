@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react';
 import { connect } from "react-redux";
 
-import fetchPhotos from './actions'
+import { fetchPhotos } from './actions'
 
 import PhotoList from './components/photoList'
 import './App.css';
 
-function App() {
+function App(props) {
   useEffect(() => {
-    fetchPhotos()
+    props.fetchPhotos()
   }, [])
 
   return (

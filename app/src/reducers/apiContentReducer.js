@@ -3,12 +3,7 @@ import { ERROR_FETCH_PHOTO } from '../actions'
 import { SUCCESS_FETCH_PHOTO } from '../actions'
 
 export const initialState = {
-  photos: [
-    {
-      image: '',
-      date: ''
-    }
-  ],
+  photos: [],
   loading: false,
   errorMessage: ''
 };
@@ -22,15 +17,14 @@ export const reducer = (state = initialState, action) => {
     case ERROR_FETCH_PHOTO:
       return {
         ...state,
-        error: action.payload
+        error: action.payload,
+        loading: false
       }
     case SUCCESS_FETCH_PHOTO:
       return {
       ...state,
       loading: false,
-        ...photos,
-          url: action.payload.image,
-          date: action.payload.date
+      photos: action.payload
       }
     default:
       return state;
