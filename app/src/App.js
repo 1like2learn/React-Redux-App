@@ -9,11 +9,11 @@ import './App.css';
 function App(props) {
   useEffect(() => {
     props.fetchPhotos()
-  }, [])
+  }, [props])
 
   return (
     <div className="App">
-      <h1>Earth From Afar</h1>
+      <h1>Yesterday's Earth</h1>
       <PhotoList photos= {props.photos}/>
     </div>
   );

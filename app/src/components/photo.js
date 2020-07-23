@@ -25,7 +25,7 @@ const Photo = (props) => {
       {image.length && (
         <Card>
           <h3>{(new Date(date).getHours()+1)}</h3>
-          <img src={`${urlBase}${dayOfPhotos.year}/${dayOfPhotos.month}/${dayOfPhotos.day}/png/${image}.png`}/>
+          <img src={`${urlBase}${dayOfPhotos.year}/${dayOfPhotos.month}/${dayOfPhotos.day}/png/${image}.png`} alt={new Date(date).getHours()+1}/>
         </Card>
       )}
     </div>

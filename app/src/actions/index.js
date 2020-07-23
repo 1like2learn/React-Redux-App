@@ -9,6 +9,8 @@ export const fetchPhotos = () => {
     dispatch({ type: FETCH_PHOTOS });
     axios.get('https://epic.gsfc.nasa.gov/api/natural')
     .then(response => {
+      console.log('response', response);
+      
       dispatch({type: SUCCESS_FETCH_PHOTO, payload: response.data})
     }).catch(response => {
       console.log(response)
