@@ -7,9 +7,10 @@ import PhotoList from './components/photoList'
 import './App.css';
 
 function App(props) {
+  const { fetchPhotos } = props 
   useEffect(() => {
-    props.fetchPhotos()
-  }, [])
+    fetchPhotos()
+  }, [fetchPhotos])
 
   return (
     <div className="App">
